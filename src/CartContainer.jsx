@@ -3,7 +3,9 @@ import { useGlobalContext } from "./context"
 import cartItems from "./data"
 
 const CartContainer = () => {
-  const { cart, clearCart } = useGlobalContext()
+  const { cart, clearCart, totalCost } = useGlobalContext()
+
+  const formatTotalCost = new Intl.NumberFormat().format(totalCost)
 
   const cartArray = Array.from(cart.entries())
 
@@ -36,7 +38,7 @@ const CartContainer = () => {
         <hr />
         <div>
           <h5 className="cart-total">
-            total <span>$10</span>
+            total <span>${formatTotalCost}</span>
           </h5>
         </div>
         <button className="btn btn-hipster" onClick={clearCart}>
